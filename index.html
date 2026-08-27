@@ -282,6 +282,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 28
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
 
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;}
+#lightbox.open{display:flex;}
+#lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;}
+#lightbox-close{position:absolute;top:20px;right:28px;font-size:2rem;color:#fff;cursor:pointer;line-height:1;opacity:0.7;transition:opacity 0.2s;}
+#lightbox-close:hover{opacity:1;}
+
 /* SPA */
 .page{display:none;}
 .page.active{display:block;}
@@ -656,7 +664,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 28
     </div>
     <div style="margin-top:48px;"><span class="section-label" style="margin-bottom:16px;">Photos</span>
       <div class="gallery-grid">
-        <div class="gallery-item"><div class="gallery-ph">Photo 1</div></div>
+        <div class="gallery-item" onclick="openLightbox('image/photo-1-full.webp')">
+          <img src="image/photo-1.webp" alt="Double Birdie event" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+        </div>
         <div class="gallery-item"><div class="gallery-ph">Photo 2</div></div>
         <div class="gallery-item"><div class="gallery-ph">Photo 3</div></div>
         <div class="gallery-item"><div class="gallery-ph">Photo 4</div></div>
@@ -884,6 +894,17 @@ function toggleFaq(btn){
 function submitContact(){
   document.getElementById('contactConfirm').style.display='block';
 }
+function openLightbox(src){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightbox-img').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
 function newsletterSignup(btn){
   var input=btn.previousElementSibling;
   if(!input.value||!input.value.includes('@')){input.style.borderColor='var(--teal)';return;}
@@ -891,5 +912,12 @@ function newsletterSignup(btn){
   input.value='';input.placeholder='You are in!';
 }
 </script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
 </body>
 </html>
