@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Test</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#0A1628;color:#F0F4F8;}
+nav{position:fixed;top:0;left:0;right:0;background:#112240;padding:16px 24px;display:flex;gap:16px;z-index:100;}
+nav a{color:#0E9B8A;cursor:pointer;text-decoration:none;font-weight:bold;}
+.page{display:none;padding:100px 24px 40px;}
+.page.active{display:block;}
+</style>
+</head>
+<body>
+<nav>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('gallery')">Gallery</a>
+  <a onclick="showPage('pricing')">Pricing</a>
+</nav>
+<div class="page active" id="page-home">
+  <h1>Home Page</h1>
+  <img src="/image/photo-1.webp" style="max-width:400px;display:block;margin-top:20px;" alt="test"/>
+</div>
+<div class="page" id="page-gallery">
+  <h1>Gallery</h1>
+  <img src="/image/photo-1.webp" style="max-width:600px;display:block;margin-top:20px;" alt="test"/>
+</div>
+<div class="page" id="page-pricing">
+  <h1>Pricing</h1>
+  <p>Pricing page works.</p>
+</div>
+<script>
+function showPage(name) {
+  var pages = document.querySelectorAll('.page');
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].classList.remove('active');
+  }
+  var target = document.getElementById('page-' + name);
+  if (target) {
+    target.classList.add('active');
+  }
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
