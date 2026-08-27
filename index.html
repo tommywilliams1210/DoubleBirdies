@@ -353,10 +353,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 28
       <a class="btn btn-outline" href="javascript:void(0)" onclick="showPage('how')">See How It Works</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">5</div><div class="stat-label">Hours Max Play</div></div>
       <div><div class="stat-num">GSPro</div><div class="stat-label">Simulator Software</div></div>
-      <div><div class="stat-num">100+</div><div class="stat-label">Golf Courses</div></div>
-      <div><div class="stat-num">/bin/sh</div><div class="stat-label">Setup Hassle</div></div>
+      <div><div class="stat-num">100+</div><div class="stat-label">Courses Available</div></div>
+      <div><div class="stat-num">4K</div><div class="stat-label">HD Projection</div></div>
+      <div><div class="stat-num">Live</div><div class="stat-label">Shot Data Every Swing</div></div>
     </div>
   </div>
 </section>
@@ -851,7 +851,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 28
     setTimeout(function(){ splash.style.display='none'; }, 520);
   }
 
-  // Safety net — no matter what, splash gone after 4s
+  // Safety net - no matter what, splash gone after 4s
   var killTimer = setTimeout(hideSplash, 4000);
 
   if(sessionStorage.getItem('splashSeen')){
@@ -916,7 +916,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbo
 function newsletterSignup(btn){
   var input=btn.previousElementSibling;
   if(!input.value||!input.value.includes('@')){input.style.borderColor='var(--teal)';return;}
-  btn.textContent='✓';btn.style.background='#0E9B8A';
+  btn.textContent='Done';btn.style.background='#0E9B8A';
   input.value='';input.placeholder='You are in!';
 }
 </script>
